@@ -702,7 +702,7 @@ if ($kret_formname == 'ruchy') { //  **************************************** OP
   .box {
     width: 150px;
     height: 150px;
-    background-color: #fff;
+    background-color: whitesmoke;
     /* transition: all 250ms ease; */
     will-change: transition;
     display: inline-block;
