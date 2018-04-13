@@ -25,7 +25,7 @@ install:
     - sudo chmod 0755 /usr/local/bin/tsmarty2c
 
 script:
-    - vendor/bin/php-cs-fixer --no-interaction --dry-run --diff -v fix website/
+    - vendor/bin/php-cs-fixer --no-interaction --dry-run --diff -v fix website
     # Check against CRLF
     - scripts/check-crlf.sh
     # Check against trailing whitespaces on php files
