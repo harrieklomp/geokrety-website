@@ -1,0 +1,32 @@
+version: '2'
+services:
+    geokrety:
+# following line causes docker-compose to build image using ./Dockerfile
+        build: .
+        volumes:
+            - /home/docker/configs/konfig-mysql.php:/var/www/html/templates/konfig-mysql.php:ro
+            - /home/docker/configs/konfig-local.php:/var/www/html/templates/konfig-local.php:ro
+        links:
+            - mariadb
+        ports:
+            - 80:80
+            - 443:443
+    mariadb:
+        image: mariadb:10.3
+# todo: remove ports if possible.
+# without ports mapping, mariadb seems not seen from geokrety
+# but links are used to allow communication between services ??
+        ports:
+            - "3306:3306"
+        volumes:
+            - /home/docker/mariadb:/docker-entrypoint-initdb.d
+        environment:
+            - MYSQL_ROOT_PASSWORD=password
+            - TIME_ZONE=UTC
+    adminer:
+        image: adminer:4.6.2
+        restart: always
+        links:
+            - mariadb
+        ports:
+            - 8880:8080

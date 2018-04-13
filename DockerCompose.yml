@@ -1,8 +1,0 @@
-version: '2'
-services:
-    geokrety:
-# following line causes docker-compose to build image using ./Dockerfile
-        build: .
-        ports:
-            - 80:80
-            - 443:443

@@ -10,5 +10,7 @@ Feel free to add your notes here.
 
 
 ## Travis_ci
-	Each time you are pushing fresh commits, a new travis job is started https://travis-ci.org/geokrety/geokrety-website/
-	Travis checks are defined into ".travis.yml"
+
+Each time you are pushing fresh commits, a new travis job is started onto [travis-ci.org/geokrety](https://travis-ci.org/geokrety/geokrety-website/).
+
+Travis checks are defined into [.travis.yml](../website/.travis.yml)
