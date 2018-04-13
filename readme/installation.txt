@@ -11,7 +11,7 @@ Installation on a local filesystem:
 - copy readme/konfig-mysql.tmpl.php to templates/konfig-mysql.php and change settings to fit your local ones
 - copy readme/konfig-local.tmpl.php to templates/konfig-local.php and change settings to fit your local ones
 - make sure those path are writable (eg chmod a+rwx compile)
-// NON * obrazek.png
+ * obrazek.png
  * mapki/
  * obrazki/
  * obrazki-dowonu/
@@ -20,6 +20,9 @@ Installation on a local filesystem:
  * templates/wykresy/
 // NON * templates/cache
  * templates/htmlpurifier/library/HTMLPurifier/DefinitionCache/Serializer/
+ 
+// PLUS
+ * files/
 
 
 
@@ -80,4 +83,5 @@ Installation using Docker Toolbox
   $ docker exec 4c ls -la /var/www/html
   $ docker cp konfig-mysql.php 4c:/var/www/html/templates
   $ docker cp konfig-local.php 4c:/var/www/html/templates
-  $ docker exec 4c chmod a+rwx /var/www/html/mapki/ /var/www/html/obrazki/ /var/www/html/obrazki-dowonu/ /var/www/html/obrazki-male/ /var/www/html/templates/compile/ /var/www/html/templates/wykresy/ /var/www/html/templates/htmlpurifier/library/HTMLPurifier/DefinitionCache/Serializer/
+  $ docker exec 4c touch /var/www/html/obrazek.png
+  $ docker exec 4c chmod a+rwx /var/www/html/obrazek.png /var/www/html/files /var/www/html/mapki/ /var/www/html/obrazki/ /var/www/html/obrazki-dowonu/ /var/www/html/obrazki-male/ /var/www/html/templates/compile/ /var/www/html/templates/wykresy/ /var/www/html/templates/htmlpurifier/library/HTMLPurifier/DefinitionCache/Serializer/
