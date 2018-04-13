@@ -1,5 +1,5 @@
-Notes for programmers:
-============================================
+# Notes for programmers
+
 Feel free to add your notes here.
 
 
@@ -9,6 +9,6 @@ Feel free to add your notes here.
 
 
 
-* travis_ci
+## Travis_ci
 	Each time you are pushing fresh commits, a new travis job is started https://travis-ci.org/geokrety/geokrety-website/
 	Travis checks are defined into ".travis.yml"

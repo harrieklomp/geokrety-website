@@ -2,6 +2,12 @@
 
 # GeoKrety.org source code
 
-This is the actual code running behind http://geokrety.org/.
+This is the actual code running behind http://geokrety.org/
 
 Please contact us directly for any security issue contact@geokretymap.org
+
+# Contribute
+
+cf. [installation](readme/installation.md) and [4programmers](readme/4programmers.md) readme files.
+
+

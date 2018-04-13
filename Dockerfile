@@ -32,7 +32,7 @@ RUN apt-get update \
 COPY docker/000-default.conf /etc/apache2/sites-available/000-default.conf
 
 # Configure locales
-COPY locale.gen /etc/locale.gen
+COPY docker/locale.gen /etc/locale.gen
 RUN locale-gen
 
 # Download Install Smarty
@@ -49,6 +49,6 @@ ADD https://github.com/smarty-gettext/smarty-gettext/raw/master/function.locale.
 RUN chmod a+r /usr/share/php/smarty/libs/plugins/block.t.php /usr/share/php/smarty/libs/plugins/function.locale.php
 
 # Install site
-COPY . /var/www/html/
+COPY website/ /var/www/html/
 
-# Use it with: docker run -it --rm --name geokrety -p 80:80 -v $(pwd):/var/www/html/ geokrety
+# to use it without docker-compose : docker run -it --rm --name geokrety -p 80:80 -v $(pwd)/website:/var/www/html/ geokrety

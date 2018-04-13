@@ -1,19 +1,16 @@
 #!/bin/bash
-# usage: ./launch.sh
+# usage: ./DockerComposeMariaDb.sh
 #
-# issue with executable? try running first /C/Programmes/DockerToolbox/start.sh
-# start.sh: GIT BASH HACK
-#		DOCKER_MACHINE="/C/Programmes/DockerToolbox/docker-machine.exe"
-#		VBOXMANAGE="/C/Programmes/VirtualBox/VBoxManage.exe"
+# Goal: automate the way to create geokrety-db docker-machine: mariadb (mysql fork)
 #
 MACHINE=geokrety-db
 COMPOSE_FILE="DockerComposeMariaDb.yml"
-DOCKERMACHINE_VERSION=$(docker-machine -version)
 
 function dockerNeeded {
 	echo "requirements: docker-toolbox (version 18 or sup)"
 	echo "   This script rely on docker-toolbox to create docker container: docker-machine docker-compose binaries should be in your PATH"
-	echo "   windows user could get msi file from https://docs.docker.com/toolbox/toolbox_install_windows/ (recommended), or (using powershell admin)'choco install docker-toolbox'"
+	echo "   windows user could get msi file from https://docs.docker.com/toolbox/toolbox_install_windows/ (recommended),"
+    echo "   or (using powershell admin)'choco install docker-toolbox'"
 	exit 1
 }
 
@@ -22,8 +19,9 @@ function die(){
    exit 1
 }
 
-docker-machine -version || dockerNeeded
-docker-compose -version || dockerNeeded
+docker-machine -version 2>&1 1>/dev/null || dockerNeeded
+docker-compose -version 2>&1 1>/dev/null || dockerNeeded
+DOCKERMACHINE_VERSION=$(docker-machine -version)
 
 if [ "$1" == "revert" ]; then
 	if docker-machine ls | grep $MACHINE ; then
@@ -57,3 +55,4 @@ echo " * Docker compose ($COMPOSE_FILE)"
 docker-compose -f $COMPOSE_FILE up -d --force-recreate || die "compose error"
 
 echo "database available at ${GK_IP}:3306"
+echo "use this host:ip to create following file : website/templates/konfig-mysql.php"

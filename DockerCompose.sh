@@ -1,19 +1,17 @@
 #!/bin/bash
-# usage: ./launch.sh
+# usage: ./DockerCompose.sh
 #
-# issue with executable? try running first /C/Programmes/DockerToolbox/start.sh
-# start.sh: GIT BASH HACK
-#		DOCKER_MACHINE="/C/Programmes/DockerToolbox/docker-machine.exe"
-#		VBOXMANAGE="/C/Programmes/VirtualBox/VBoxManage.exe"
+# Goal: automate the way to create geokrety-server docker-machine: apache + php + extra modules
+# Requirement: MySql; cf. DockerComposeMariaDb.sh
 #
 MACHINE=geokrety-server
 COMPOSE_FILE="DockerCompose.yml"
-DOCKERMACHINE_VERSION=$(docker-machine -version)
 
 function dockerNeeded {
 	echo "requirements: docker-toolbox (version 18 or sup)"
 	echo "   This script rely on docker-toolbox to create docker container: docker-machine docker-compose binaries should be in your PATH"
-	echo "   windows user could get msi file from https://docs.docker.com/toolbox/toolbox_install_windows/ (recommended), or (using powershell admin)'choco install docker-toolbox'"
+	echo "   windows user could get msi file from https://docs.docker.com/toolbox/toolbox_install_windows/ (recommended),"
+    echo "   or (using powershell admin)'choco install docker-toolbox'"
 	exit 1
 }
 
@@ -22,8 +20,9 @@ function die(){
    exit 1
 }
 
-docker-machine -version || dockerNeeded
-docker-compose -version || dockerNeeded
+docker-machine -version 2>&1 1>/dev/null || dockerNeeded
+docker-compose -version 2>&1 1>/dev/null || dockerNeeded
+DOCKERMACHINE_VERSION=$(docker-machine -version)
 
 if [ "$1" == "revert" ]; then
 	if docker-machine ls | grep $MACHINE ; then
