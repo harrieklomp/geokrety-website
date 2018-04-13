@@ -13,8 +13,8 @@ if (class_exists('PhpCsFixer\Finder')) {    // PHP-CS-Fixer 2.x
         ->notPath('templates/GoogleMap.php')
         ->notPath('templates/PasswordHash.php')
         ->notPath('templates/JSMin.php')
-        ->notPath('/szef/smarty.php')
-        ->in(__DIR__)
+        ->notPath('szef/smarty.php')
+        ->in('website/')
     ;
 
     return PhpCsFixer\Config::create()
@@ -39,7 +39,7 @@ if (class_exists('PhpCsFixer\Finder')) {    // PHP-CS-Fixer 2.x
         ->notPath('templates/PasswordHash.php')
         ->notPath('templates/JSMin.php')
         ->notPath('/szef/smarty.php')
-        ->in(__DIR__)
+        ->in('website/')
     ;
 
     return Symfony\CS\Config::create()

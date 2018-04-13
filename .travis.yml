@@ -26,9 +26,7 @@ install:
     - sudo chmod 0755 /usr/local/bin/tsmarty2c
 
 script:
-    # seems no effect # - php5dismod xdebug
-    # tell travis to wait 30 min instead of 10 (without output)
-    - travis_wait 30 vendor/bin/php-cs-fixer --no-interaction --dry-run --diff -v fix website
+    - vendor/bin/php-cs-fixer --no-interaction --dry-run --diff -v fix
     # Check against CRLF
     - scripts/check-crlf.sh
     # Check against trailing whitespaces on php files
