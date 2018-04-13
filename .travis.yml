@@ -18,7 +18,7 @@ addons:
         packages:
             - moreutils
             - gettext
-            - php5-common
+    # seems no effect #         - php5-common
 
 install:
     - composer require --dev friendsofphp/php-cs-fixer
@@ -26,8 +26,9 @@ install:
     - sudo chmod 0755 /usr/local/bin/tsmarty2c
 
 script:
-    - php5dismod xdebug
-    - vendor/bin/php-cs-fixer --no-interaction --dry-run --diff -v fix website
+    # seems no effect # - php5dismod xdebug
+    # tell travis to wait 30 min instead of 10 (without output)
+    - travis_wait 30 vendor/bin/php-cs-fixer --no-interaction --dry-run --diff -v fix website
     # Check against CRLF
     - scripts/check-crlf.sh
     # Check against trailing whitespaces on php files
